@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Rodrigues Freitas | Data Consultant Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #6366f1;
+            --secondary: #10b981;
+            --accent: #06b6d4;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --text: #334155;
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            overflow-x: hidden;
+            background: var(--dark);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(1deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(255,255,255,0.3)); }
+            to { filter: drop-shadow(0 0 40px rgba(255,255,255,0.6)); }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 600px;
+            margin: 0 auto 3rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background: rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,255,255,0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-button:hover {
+            background: rgba(255,255,255,0.2);
+            border-color: rgba(255,255,255,0.6);
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .section {
+            padding: 100px 0;
+            position: relative;
+        }
+
+        .section-light {
+            background: var(--light);
+        }
+
+        .section-dark {
+            background: var(--dark);
+            color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            margin-bottom: 60px;
+            background: var(--gradient);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient);
+            border-radius: 2px;
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 80px rgba(0,0,0,0.15);
+        }
+
+        .card-dark {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card-dark .card-title {
+            color: white;
+        }
+
+        .card-text {
+            color: var(--text);
+            opacity: 0.8;
+        }
+
+        .card-dark .card-text {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .experience-timeline {
+            position: relative;
+            margin: 60px 0;
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 60px;
+            bottom: -60px;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--primary), transparent);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 20px;
+            margin-right: 40px;
+            flex-shrink: 0;
+            z-index: 2;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            border: 3px solid white;
+        }
+
+        .timeline-icon img {
+            width: 50px;
+            height: 50px;
+            object-fit: contain;
+            border-radius: 50%;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            transform: translateX(10px);
+            background: rgba(255,255,255,0.12);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+        }
+
+        .timeline-company {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .timeline-role {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: white;
+            margin-bottom: 10px;
+        }
+
+        .timeline-period {
+            color: var(--secondary);
+            font-weight: 500;
+            margin-bottom: 15px;
+        }
+
+        .timeline-description {
+            color: rgba(255,255,255,0.9);
+            line-height: 1.6;
+        }
+
+        .timeline-achievements {
+            margin-top: 15px;
+        }
+
+        .timeline-achievements ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .timeline-achievements li {
+            padding: 8px 0;
+            padding-left: 20px;
+            position: relative;
+            color: rgba(255,255,255,0.8);
+        }
+
+        .timeline-achievements li::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-size: 12px;
+        }
+
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .skill-category {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            padding: 30px;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+
+        .skill-category h3 {
+            color: white;
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: var(--gradient);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(99, 102, 241, 0.4);
+        }
+
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .project-card {
+            background: rgba(255,255,255,0.05);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.3);
+        }
+
+        .project-header {
+            padding: 30px;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .project-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .project-subtitle {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .project-content {
+            padding: 30px;
+            color: rgba(255,255,255,0.9);
+        }
+
+        .contact-section {
+            background: var(--gradient);
+            padding: 100px 0;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            margin: 0;
+        }
+
+        .contact-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="contact-grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23contact-grid)"/></svg>');
+            animation: float 25s ease-in-out infinite;
+        }
+
+        .contact-section::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(255,255,255,0.1) 1px, transparent 1px);
+            background-size: 80px 80px;
+            animation: float 30s linear infinite reverse;
+        }
+
+        .contact-title {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 900;
+            color: white;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            background: linear-gradient(45deg, #fff, #e2e8f0);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+            position: relative;
+            z-index: 2;
+        }
+
+        .contact-subtitle {
+            font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+            color: rgba(255,255,255,0.9);
+            margin-bottom: 3rem;
+            font-weight: 300;
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .contact-item {
+            background: rgba(15, 23, 42, 0.8);
+            border-radius: 20px;
+            overflow: hidden;
+            border: 2px solid rgba(255,255,255,0.2);
+            backdrop-filter: blur(15px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .contact-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .contact-header {
+            padding: 30px;
+            background: var(--gradient);
+            color: white;
+        }
+
+        .contact-header h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .contact-content {
+            padding: 30px;
+            background: rgba(15, 23, 42, 0.95);
+            text-align: center;
+        }
+
+        .contact-content p {
+            font-size: 1.1rem;
+            color: #ffffff;
+            font-weight: 600;
+            line-height: 1.4;
+            margin: 0;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: rgba(16, 185, 129, 0.6);
+            border-radius: 50%;
+            animation: particle-float 15s infinite linear;
+        }
+
+        @keyframes particle-float {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            top: 50%;
+            right: 30px;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .scroll-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .scroll-dot.active {
+            background: white;
+            transform: scale(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 3rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+            
+            .timeline-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .scroll-indicator {
+                display: none;
+            }
+
+            .contact-section {
+                padding: 80px 0;
+            }
+
+            .contact-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .contact-item {
+                padding: 30px 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    
+    <div class="scroll-indicator">
+        <div class="scroll-dot active" data-section="hero"></div>
+        <div class="scroll-dot" data-section="about"></div>
+        <div class="scroll-dot" data-section="experience"></div>
+        <div class="scroll-dot" data-section="skills"></div>
+        <div class="scroll-dot" data-section="projects"></div>
+        <div class="scroll-dot" data-section="contact"></div>
+    </div>
+
+    <section class="hero" id="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Guilherme Rodrigues</h1>
+                <h2 class="hero-subtitle">Senior Data Consultant</h2>
+                <p class="hero-description">
+                    Transformando dados complexos em insights estratégicos que impulsionam o crescimento empresarial através de soluções inovadoras de BI e Machine Learning
+                </p>
+                <a href="#contact" class="cta-button">Vamos Conversar</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-light" id="about">
+        <div class="container">
+            <h2 class="section-title">Sobre Mim</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3 class="card-title">Foco em Resultados</h3>
+                    <p class="card-text">Especialista em transformar dados em decisões estratégicas que geram impacto real no crescimento dos negócios.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚀</div>
+                    <h3 class="card-title">Inovação Constante</h3>
+                    <p class="card-text">Desenvolvimento de soluções automatizadas e dashboards interativos que otimizam processos e aumentam a eficiência operacional.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3 class="card-title">Expertise Técnica</h3>
+                    <p class="card-text">Domínio completo em Python, SQL, Power BI, Machine Learning e ferramentas de análise avançada para grandes volumes de dados.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="experience">
+        <div class="container">
+            <h2 class="section-title">Experiência Profissional</h2>
+            <div class="experience-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <img src="https://logo.clearbit.com/surftelecom.com.br" alt="Surf Telecom Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-company">Surf Telecom</div>
+                        <div class="timeline-role">Consultor de Dados Senior</div>
+                        <div class="timeline-period">Julho 2025 - Atual</div>
+                        <div class="timeline-description">
+                            <p>Gerenciamento completo de processos de dados no setor de telecomunicações, desde extração até análise e visualização para estratégias de retenção, churn e rentabilização da receita.</p>
+                        </div>
+                        <div class="timeline-achievements">
+                            <ul>
+                                <li>Otimização de processos ETL com Pentaho Data Integration e AWS Glue</li>
+                                <li>Análises profundas de CRM e gestão de base de clientes pré-pago</li>
+                                <li>Consultas complexas em Redshift AWS para análise de ciclo de vida</li>
+                                <li>Dashboards estratégicos em Power BI para times de CRM e vendas</li>
+                                <li>Automação de processos com Python para análise de dados</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <img src="https://logo.clearbit.com/dhl.com" alt="DHL Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-company">DHL</div>
+                        <div class="timeline-role">Analista de Processos/Dados</div>
+                        <div class="timeline-period">Outubro 2024 - Julho 2025</div>
+                        <div class="timeline-description">
+                            <p>Desenvolvimento de soluções analíticas avançadas para otimização da cadeia de suprimentos, com foco em automação e inteligência artificial aplicada à logística.</p>
+                        </div>
+                        <div class="timeline-achievements">
+                            <ul>
+                                <li>Dashboards analíticos em Power BI e Tableau para monitoramento de KPIs</li>
+                                <li>Modelos de Machine Learning (Random Forest, Redes Neurais) para análises preditivas</li>
+                                <li>Automação de processos operacionais com Python e JavaScript</li>
+                                <li>Implementação de chatbots na plataforma Microsoft Azure</li>
+                                <li>Análises complexas de grandes volumes de dados em BigQuery</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <img src="https://logo.clearbit.com/shopee.com.br" alt="Shopee Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-company">Shopee Brasil</div>
+                        <div class="timeline-role">Analista de Projetos Logísticos</div>
+                        <div class="timeline-period">Agosto 2023 - Junho 2024</div>
+                        <div class="timeline-description">
+                            <p>Criação de soluções analíticas estratégicas para otimização logística em ambiente de e-commerce de alta escala, com foco em automação e análise preditiva.</p>
+                        </div>
+                        <div class="timeline-achievements">
+                            <ul>
+                                <li>Dashboards estratégicos em Power BI para métricas logísticas críticas</li>
+                                <li>Modelos preditivos para SPR, TMD e Stuck Parcels com cenários futuros</li>
+                                <li>Automação em Python para coleta e processamento de dados do sistema</li>
+                                <li>Otimização de processos logísticos com melhorias nos prazos de entrega</li>
+                                <li>Análise de risco em projetos logísticos com equipes multifuncionais</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-icon">
+                        <img src="https://logo.clearbit.com/itau.com.br" alt="Itaú Logo">
+                    </div>
+                    <div class="timeline-content">
+                        <div class="timeline-company">Itaú Unibanco</div>
+                        <div class="timeline-role">Analista de Dados Financeiros</div>
+                        <div class="timeline-period">Abril 2022 - Fevereiro 2023</div>
+                        <div class="timeline-description">
+                            <p>Análise estratégica de carteira de clientes de alto valor no setor financeiro, com foco em conformidade regulatória e gestão de riscos de investimento.</p>
+                        </div>
+                        <div class="timeline-achievements">
+                            <ul>
+                                <li>Análise de carteira de clientes com patrimônio acima de R$ 1 milhão</li>
+                                <li>Conformidade com regulamentações do Banco Central do Brasil</li>
+                                <li>Middle office com análise de riscos e oportunidades de investimento</li>
+                                <li>Relatórios analíticos para suporte à tomada de decisão estratégica</li>
+                                <li>Implementação de controles internos para supervisão de dados financeiros</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="skills">
+        <div class="container">
+            <h2 class="section-title">Competências Técnicas</h2>
+            <div class="skills-container">
+                <div class="skill-category">
+                    <h3>🐍 Linguagens de Programação</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">VBA</span>
+                        <span class="skill-tag">R</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>📊 Business Intelligence</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Power BI</span>
+                        <span class="skill-tag">Tableau</span>
+                        <span class="skill-tag">Excel Avançado</span>
+                        <span class="skill-tag">Looker Studio</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>☁️ Cloud & Big Data</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Microsoft Azure</span>
+                        <span class="skill-tag">BigQuery</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Databricks</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🤖 Machine Learning</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Random Forest</span>
+                        <span class="skill-tag">Decision Tree</span>
+                        <span class="skill-tag">Redes Neurais</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>🛠️ Ferramentas & Design</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Figma</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Jupyter</span>
+                    </div>
+                </div>
+                
+                <div class="skill-category">
+                    <h3>💼 Metodologias</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Agile</span>
+                        <span class="skill-tag">Scrum</span>
+                        <span class="skill-tag">ETL</span>
+                        <span class="skill-tag">Data Mining</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-dark" id="projects">
+        <div class="container">
+            <h2 class="section-title">Projetos em Destaque</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🤖 Chatbot Bender</h3>
+                        <p class="project-subtitle">Integração com Microsoft Teams</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Desenvolvimento de chatbot inteligente integrado ao Teams para compartilhamento automatizado de análises preditivas sobre KPIs logísticos, aumentando significativamente a eficiência da comunicação interna.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🌧️ Maju Coutinho</h3>
+                        <p class="project-subtitle">Sistema de Monitoramento Meteorológico</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Integração em tempo real com dados do Inmetro para monitoramento de condições climáticas, permitindo respostas rápidas a eventos meteorológicos e redução de impactos operacionais.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">📊 Control Tower Dash</h3>
+                        <p class="project-subtitle">Monitoramento de 1M+ pedidos/dia</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Dashboard em Power BI para monitoramento em tempo real de mais de 1 milhão de pedidos diários, otimizando a análise de grandes volumes de dados e tomada de decisões estratégicas.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">📰 Analytics News</h3>
+                        <p class="project-subtitle">Jornal Automatizado de Performance</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Jornal informativo diário automatizado com informações D0 sobre SLAs de todas as operações, desenvolvido em HTML/CSS para relatórios visuais e comunicação eficiente.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🗺️ Sistema de Roteirização</h3>
+                        <p class="project-subtitle">Geocodificação e Otimização de Rotas</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Automação completa para geocodificação de endereços e criação de rotas otimizadas, com dashboards integrados para acompanhamento em tempo real e maximização da eficiência logística.</p>
+                    </div>
+                </div>
+                
+                <div class="project-card">
+                    <div class="project-header">
+                        <h3 class="project-title">🛣️ Software Guido</h3>
+                        <p class="project-subtitle">Gestão de Anormalidades</p>
+                    </div>
+                    <div class="project-content">
+                        <p>Plataforma integrada para monitoramento eficiente de problemas em rotas, reduzindo significativamente o tempo de resposta e resolução de incidentes operacionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+        <div class="container">
+            <h2 class="contact-title">Vamos Construir o Futuro dos Dados</h2>
+            <p class="contact-subtitle">Pronto para transformar seus dados em vantagem competitiva? Entre em contato e vamos conversar sobre como posso ajudar sua empresa a alcançar novos patamares com análise de dados inteligente.</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <h3>📧 Email</h3>
+                    </div>
+                    <div class="contact-content">
+                        <p>guitafreitas7@gmail.com</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <h3>📱 WhatsApp</h3>
+                    </div>
+                    <div class="contact-content">
+                        <p>(11) 98708-1718</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-header">
+                        <h3>💼 LinkedIn</h3>
+                    </div>
+                    <div class="contact-content">
+                        <p>linkedin.com/in/guilherme-rodrigues-804010236</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function createParticles() {
+            const particles = document.getElementById('particles');
+            for (let i = 0; i < 50; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDelay = Math.random() * 15 + 's';
+                particle.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                particles.appendChild(particle);
+            }
+        }
+
+        function handleScroll() {
+            const sections = ['hero', 'about', 'experience', 'skills', 'projects', 'contact'];
+            const scrollDots = document.querySelectorAll('.scroll-dot');
+            const scrollTop = window.pageYOffset;
+            const windowHeight = window.innerHeight;
+            
+            sections.forEach((sectionId, index) => {
+                const section = document.getElementById(sectionId);
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.offsetHeight;
+                
+                if (scrollTop >= sectionTop - windowHeight/2 && scrollTop < sectionTop + sectionHeight - windowHeight/2) {
+                    scrollDots.forEach(dot => dot.classList.remove('active'));
+                    scrollDots[index].classList.add('active');
+                }
+            });
+        }
+
+        function smoothScroll() {
+            const scrollDots = document.querySelectorAll('.scroll-dot');
+            const ctaButton = document.querySelector('.cta-button');
+            
+            scrollDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const sectionId = dot.getAttribute('data-section');
+                    document.getElementById(sectionId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            ctaButton.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.getElementById('contact').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        function observeElements() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.card, .timeline-item, .project-card').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            createParticles();
+            smoothScroll();
+            observeElements();
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
+</body>
+</html>
